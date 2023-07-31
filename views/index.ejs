@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ระบบรดน้ำ IOT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container px-4 text-center" style="margin-top: 50px;">
+      <div class="row gx-5">
+        <div class="col">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
+<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script>
+const liffId = '2000256743-2myzGVdn';
+let userId = '';
+
+function main(){
+    liff.init({liffId: liffId});
+    liff.ready.then(() => {
+        if(!liff.isLoggedIn()){
+            liff.login({ redirectUri: window.location.href });
+        }        
+        liff.getProfile().then((profile) => {            
+            userId = profile.userId;
+        });
+    });
+}
+
+main()
+</script>
